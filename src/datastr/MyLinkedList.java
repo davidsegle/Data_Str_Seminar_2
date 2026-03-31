@@ -50,6 +50,38 @@ public class MyLinkedList<Ttype> {
 		
 	}
 	
+	public void add(Ttype element, int position)throws Exception {
+		if(isFull()) {
+			throw new Exception("Saraksts ir pilns un nav iespejams pievienot elementu");
+		}
+		if(element == null) {
+			throw new Exception("Padotais elements nav noradits");
+		}
+		if(position < 0) {
+			throw new Exception("Pozicija nevar but negativa");
+		}
+		if(position > howManyElements) {
+			throw new Exception("Pozicija nevar but lielaka par esoso elementu skaitu");
+		}
+		
+		if(position == 0) {
+			MyNode<Ttype> newNode = new MyNode<Ttype>(element);
+			
+			newNode.setNextNode(firstNode);
+			firstNode.setPreviousNode(newNode);
+			
+			firstNode = newNode;
+			howManyElements++;
+		}
+		else if(position == howManyElements) {
+			add(element);
+		}
+		else {
+			
+		}
+	}
+	
+	
 	public void print() throws Exception{
 		if(isEmpty()) {
 			throw new Exception("Saraksta nav elementu lidz ar to neko nevar izprintet");
